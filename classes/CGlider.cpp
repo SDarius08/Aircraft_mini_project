@@ -1,32 +1,32 @@
 //
-// Created by pafnu on 12/29/2024.
+// Created by Darius on 12/29/2024.
 //
 #include <iostream>
 #include <string.h>
 #include "../headers/FlyingObject.h"
-#include "../headers/CGlinder.h"
+#include "../headers/CGlider.h"
 
 using namespace std;
 
-CGlinder::CGlinder() : CAircraft()
+CGlider::CGlider() : CAircraft()
 {
     m_class = 0;
     m_load = 0;
 }
 
-CGlinder::CGlinder(char *m_owner, int m_type, int m_class, double m_load) : CAircraft(m_owner,m_type)
+CGlider::CGlider(char *m_owner, int m_type, int m_class, double m_load) : CAircraft(m_owner, m_type)
 {
     this->m_class = m_class;
     this->m_load = m_load;
 }
 
-CGlinder::CGlinder(const CGlinder& glider) : CAircraft(glider)
+CGlider::CGlider(const CGlider& glider) : CAircraft(glider)
 {
     m_class = glider.m_class;
     m_load = glider.m_load;
 }
 
-CGlinder &CGlinder::operator=(const CGlinder &g)
+CGlider &CGlider::operator=(const CGlider &g)
 {
     CAircraft::operator=(g);
 
@@ -36,7 +36,17 @@ CGlinder &CGlinder::operator=(const CGlinder &g)
     return *this;
 }
 
-void CGlinder::Write()
+int CGlider::GetClass()
+{
+    return m_class;
+}
+
+double CGlider::GetLoad()
+{
+    return m_load;
+}
+
+void CGlider::Write()
 {
     char* atype = FlyingObject::CAircraftType::GetTypeName(m_type);
     char* gclass = FlyingObject::CGliderType::GetTypeName(m_class);
@@ -48,7 +58,7 @@ void CGlinder::Write()
     cout<<"2. Effective Load: "<<m_load<<"t\n";
 }
 
-void CGlinder::Read()
+void CGlider::Read()
 {
     char buffer[_OwnerBuffer];
 
@@ -64,7 +74,7 @@ void CGlinder::Read()
     cout<<endl;
 }
 
-std::istream &operator>>(istream &is, CGlinder &g)
+std::istream &operator>>(istream &is, CGlider &g)
 {
     char buffer[_OwnerBuffer];
 
@@ -82,7 +92,7 @@ std::istream &operator>>(istream &is, CGlinder &g)
     return is;
 }
 
-std::ostream &operator<<(ostream &of, CGlinder &g)
+std::ostream &operator<<(ostream &of, CGlider &g)
 {
     char* atype = FlyingObject::CAircraftType::GetTypeName(g.m_type);
     char* gclass = FlyingObject::CGliderType::GetTypeName(g.m_class);
