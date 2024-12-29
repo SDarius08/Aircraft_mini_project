@@ -12,9 +12,11 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Main project executable
-add_executable(proiect_curs_poo
-        main.cpp
+# Include directories
+include_directories(headers)
+
+# Create a library from your source files
+add_library(proiect_curs_poo_lib
         headers/FlyingObject.h
         classes/FlyingObject.cpp
         classes/CAircraft.cpp
@@ -26,11 +28,19 @@ add_executable(proiect_curs_poo
         headers/CAircraftFactory.h
 )
 
+# Main project executable
+add_executable(proiect_curs_poo
+        main.cpp
+)
+
+# Link the library to the main executable
+target_link_libraries(proiect_curs_poo proiect_curs_poo_lib)
+
 # Add test executable
 add_executable(tests
         unit_test/CGlider_tests.cpp
-        unit_test/CGlider_tests.h
+        unit_test/main_test.cpp
 )
 
-# Link Google Test libraries to the test executable
-target_link_libraries(tests gtest gtest_main)
+# Link Google Test libraries and project library to the test executable
+target_link_libraries(tests gtest gtest_main proiect_curs_poo_lib)

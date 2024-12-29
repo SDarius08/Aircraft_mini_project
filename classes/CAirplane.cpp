@@ -31,6 +31,8 @@ CAirplane &CAirplane::operator=(const CAirplane &ca)
     CAircraft::operator=(ca);
     m_propulsion = ca.m_propulsion;
     m_speed = ca.m_speed;
+
+    return *this;
 }
 
 void CAirplane::Write()

@@ -1,9 +1,0 @@
-//
-// Created by pafnu on 12/29/2024.
-//
-
-#ifndef PROIECT_CURS_POO_CGLIDER_TESTS_H
-#define PROIECT_CURS_POO_CGLIDER_TESTS_H
-=
-
-#endif //PROIECT_CURS_POO_CGLIDER_TESTS_H

@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../headers/CGlider.h"
+#include "CGlider.h"
 
 TEST(CGliderTest, CheckDefaultValues)
 {
