@@ -4,29 +4,29 @@
 #include <string.h>
 #include "../headers/FlyingObject.h"
 #include "../headers/CAircraft.h"
-#include "../headers/CAirplane.h"
+#include "../headers/CAirplane_test.h"
 
 using namespace std;
 
-CAirplane::CAirplane() : CAircraft()
+CAirplane_test::CAirplane_test() : CAircraft()
 {
     m_propulsion = 0;
     m_speed = 0;
 }
 
-CAirplane::CAirplane(char *owner, int type, int prop, double speed) : CAircraft(owner,type)
+CAirplane_test::CAirplane_test(char *owner, int type, int prop, double speed) : CAircraft(owner, type)
 {
     m_propulsion = prop;
     m_speed = speed;
 }
 
-CAirplane::CAirplane(const CAirplane &ca) : CAircraft(ca)
+CAirplane_test::CAirplane_test(const CAirplane_test &ca) : CAircraft(ca)
 {
     m_propulsion = ca.m_propulsion;
     m_speed = ca.m_speed;
 }
 
-CAirplane &CAirplane::operator=(const CAirplane &ca)
+CAirplane_test &CAirplane_test::operator=(const CAirplane_test &ca)
 {
     CAircraft::operator=(ca);
     m_propulsion = ca.m_propulsion;
@@ -35,7 +35,17 @@ CAirplane &CAirplane::operator=(const CAirplane &ca)
     return *this;
 }
 
-void CAirplane::Write()
+int CAirplane_test::GetProp()
+{
+    return m_propulsion;
+}
+
+double CAirplane_test::GetSpeed()
+{
+    return m_speed;
+}
+
+void CAirplane_test::Write()
 {
     char* atype = FlyingObject::CAircraftType::GetTypeName(m_type);
     char* prop = FlyingObject::CPropulsionType::GetTypeName(m_propulsion);
@@ -47,7 +57,7 @@ void CAirplane::Write()
     cout<<"2. Max Speed: "<<m_speed<<"t\n";
 }
 
-void CAirplane::Read()
+void CAirplane_test::Read()
 {
     char buffer[_OwnerBuffer];
 
@@ -63,7 +73,7 @@ void CAirplane::Read()
     cout<<endl;
 }
 
-std::ostream& operator<<(ostream& os, CAirplane p)
+std::ostream& operator<<(ostream& os, CAirplane_test p)
 {
     char* atype = FlyingObject::CAircraftType::GetTypeName(p.m_type);
     char* prop = FlyingObject::CPropulsionType::GetTypeName(p.m_propulsion);
@@ -77,7 +87,7 @@ std::ostream& operator<<(ostream& os, CAirplane p)
     return os;
 }
 
-std::istream& operator>>(istream &is, CAirplane p)
+std::istream& operator>>(istream &is, CAirplane_test p)
 {
     char buffer[_OwnerBuffer];
 

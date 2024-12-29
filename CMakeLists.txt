@@ -23,7 +23,7 @@ add_library(proiect_curs_poo_lib
         classes/CGlider.cpp
         headers/CGlider.h
         classes/CAirplane.cpp
-        headers/CAirplane.h
+        headers/CAirplane_test.h
         classes/CAircraftFactory.cpp
         headers/CAircraftFactory.h
 )
@@ -40,6 +40,8 @@ target_link_libraries(proiect_curs_poo proiect_curs_poo_lib)
 add_executable(tests
         unit_test/CGlider_tests.cpp
         unit_test/main_test.cpp
+        unit_test/CAirplane_test.cpp
+        unit_test/CAircraftFactory_test.cpp
 )
 
 # Link Google Test libraries and project library to the test executable

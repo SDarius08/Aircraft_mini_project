@@ -1,7 +1,7 @@
 //
 // Created by Darius on 12/29/2024.
 //
-#include "../headers/CAirplane.h"
+#include "../headers/CAirplane_test.h"
 #include "../headers/CGlider.h"
 #include "../headers/FlyingObject.h"
 #include "../headers/CAircraftFactory.h"
@@ -14,7 +14,7 @@ CAircraft* CAircraftFactory::CreateAircraft(int type, int option)
         case 1:
         if(option == FlyingObject::CPropulsionType::JET || option == FlyingObject::CPropulsionType::PROPELLER)
         {
-            CAirplane tempAirplane("Default", type,option,0);
+            CAirplane_test tempAirplane("Default", type, option, 0);
             try
             {
                 temp = dynamic_cast<CAircraft*>(&tempAirplane);
